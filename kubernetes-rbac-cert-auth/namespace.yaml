@@ -1,0 +1,5 @@
+# Namespace where dev-user will have full access
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dev

@@ -1,0 +1,10 @@
+# Full admin access BUT only inside dev namespace
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: dev-admin-role
+  namespace: dev
+rules:
+- apiGroups: ["*"]          # all API groups
+  resources: ["*"]          # all resources
+  verbs: ["*"]              # all actions (get, create, delete, etc)
