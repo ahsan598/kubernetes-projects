@@ -6,4 +6,4 @@ This repository contains hands-on Kubernetes (K8s) projects to practice core con
 Each project demonstrates how to deploy, configure, and manage Kubernetes resources—such as Pods, Deployments, Services, ConfigMaps, Secrets, Ingress, RBAC and Helm charts — in a reproducible and production-oriented way.
 
 ### 📂 Projects Included
-- [Project 1: Certificate based dev user setup](/cert-based-dev-user)
+- [Project 1: Kubernetes RBAC Dev User Setup](/k8s-rbac-dev-project)

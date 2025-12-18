@@ -6,5 +6,6 @@ metadata:
 spec:
   request: <BASE64_CSR>
   signerName: kubernetes.io/kube-apiserver-client
+  expirationSeconds: 86400    # 1 day
   usages:
   - client auth

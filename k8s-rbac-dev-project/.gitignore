@@ -1,0 +1,5 @@
+# Ignore certificate and key material
+certs/
+
+# Optional: ignore kubeconfig backups
+*.kubeconfig
