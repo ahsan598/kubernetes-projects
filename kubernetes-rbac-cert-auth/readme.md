@@ -57,7 +57,7 @@ openssl genrsa -out dev.key 2048
 openssl req -new -key dev.key -out dev.csr -subj "/CN=dev-user"
 
 # Base64 encode CSR
-cat dev.csr | base64 | tr -d '\n'
+base64 -w 0 dev.csr
 ```
 
 **3. Create Kubernetes CSR Object:**
@@ -99,6 +99,8 @@ kubectl config set-context dev-context \
 # Switch to dev context
 kubectl config use-context dev-context
 ```
+![user-context](./assets/images/user-context.png)
+
 
 **7. Verification**
 ```sh
@@ -111,6 +113,7 @@ kubectl auth can-i delete deployments -n dev
 kubectl auth can-i get pods -n kube-system
 # no
 ```
+![verification](./assets/images/context-verify.png)
 
 
 ### Security Notes
