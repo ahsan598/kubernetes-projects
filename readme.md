@@ -1,4 +1,4 @@
-# Kubernetes Projects
+# <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/kubernetes/kubernetes-plain.svg" alt="Kubernetes" width="40"/> Kubernetes Projects
 
 <!-- <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/terraform/terraform-original.svg" alt="Terraform" width="40"/> Kubernetes Projects -->
 
