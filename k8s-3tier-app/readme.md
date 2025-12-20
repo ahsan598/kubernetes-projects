@@ -1,4 +1,4 @@
-# 🧱 Kubernetes 3-Tier Architecture Project
+# ☸️ Kubernetes 3-Tier Application Architecture
 
 
 ### 📌 Project Overview
@@ -134,7 +134,7 @@ apk update
 apk add --no-cache mysql-client
 
 # Connect to database
-mariadb -h mysql-svc -uappuser -p mysqldb --ssl=0
+mysql -h mysql-svc -uappuser -p mysqldb --ssl=0
 ```
 ![backend](./assets/images/backend-verify.png)
 
@@ -151,8 +151,8 @@ http://<NODE-IP>:30080
 # Verify locally
 curl http://<NODE-IP>:30080
 ```
-> Nginx is configured as a reverse proxy using a ConfigMap.
-> Requests to /api are forwarded to the backend ClusterIP service (backend-svc).
+> - Nginx is configured as a reverse proxy using a ConfigMap.
+> - Requests to /api are forwarded to the backend ClusterIP service (backend-svc).
 
 ![frontend](./assets/images/frontend-verify.png)
 
