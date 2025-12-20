@@ -1,0 +1,85 @@
+# Database Secret
+apiVersion: v1
+kind: Secret
+metadata:
+  name: db-secret
+  namespace: dev
+type: Opaque
+data:
+  MYSQL_ROOT_PASSWORD: cm9vdHBhc3M=         # echo cm9vdHBhc3M= | base64 -d
+  MYSQL_PASSWORD: cGFzc3dvcmQxMjM=          # echo cGFzc3dvcmQxMjM= | base64 -d
+
+---
+# Database ConfigMap
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: db-config
+  namespace: dev
+data:
+  MYSQL_DATABASE: mysqldb
+  MYSQL_USER: appuser
+
+---
+# Database Stateful Set
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mysql
+  namespace: dev
+spec:
+  serviceName: mysql-svc
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql-db
+  template:
+    metadata:
+      labels:
+        app: mysql-db
+    spec:
+      containers:
+      - name: mysql
+        image: mysql:8.0
+        ports:
+        - containerPort: 3306
+        envFrom:
+        - configMapRef:
+            name: db-config
+        - secretRef:
+            name: db-secret
+        volumeMounts:
+        - name: mysql-data
+          mountPath: /var/lib/mysql
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+  volumeClaimTemplates:
+  - metadata:
+      name: mysql-data
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      resources:
+        requests:
+          storage: 2Gi
+
+---
+# Database Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-svc
+  namespace: dev
+spec:
+  clusterIP: None
+  selector:
+    app: mysql-db
+  ports:
+  - port: 3306
+    targetPort: 3306
+    protocol: TCP
+    name: mysql
