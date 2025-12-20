@@ -7,3 +7,4 @@ Each project demonstrates how to deploy, configure, and manage Kubernetes resour
 
 ### 📂 Projects Included
 - [Project 1: Kubernetes RBAC Dev User Setup](/k8s-rbac-dev-project)
+- [Project 2: Kubernetes 3tier architect lab](/k8s-3tier-app)
